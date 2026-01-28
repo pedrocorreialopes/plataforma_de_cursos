@@ -1,0 +1,832 @@
+/* ===== 3D Components Styles ===== */
+
+/* ===== 3D Card Effects ===== */
+.card-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateY(var(--rotateY, 0deg)) rotateX(var(--rotateX, 0deg)) translateZ(20px);
+}
+
+.card-3d-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.card-3d-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.3), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card-3d:hover .card-3d-glow {
+  opacity: 1;
+}
+
+/* ===== 3D Button Effects ===== */
+.btn-3d-advanced {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(0deg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible;
+}
+
+.btn-3d-advanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), transparent);
+  transform: translateZ(-1px);
+  transition: transform 0.3s ease;
+}
+
+.btn-3d-advanced:hover {
+  transform: perspective(1000px) rotateX(-10deg) translateZ(10px);
+}
+
+.btn-3d-advanced:active {
+  transform: perspective(1000px) rotateX(0deg) translateZ(0px);
+}
+
+/* ===== 3D Icon Effects ===== */
+.icon-3d {
+  display: inline-block;
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateY(0deg) rotateX(0deg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-3d:hover {
+  transform: perspective(500px) rotateY(15deg) rotateX(-10deg) translateZ(10px);
+}
+
+.icon-3d-spin {
+  animation: icon-spin 2s linear infinite;
+}
+
+@keyframes icon-spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+/* ===== 3D Text Effects ===== */
+.text-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  text-shadow: 
+    0 1px 0 rgba(0, 0, 0, 0.1),
+    0 2px 0 rgba(0, 0, 0, 0.07),
+    0 3px 0 rgba(0, 0, 0, 0.06),
+    0 4px 0 rgba(0, 0, 0, 0.05),
+    0 5px 0 rgba(0, 0, 0, 0.04),
+    0 6px 0 rgba(0, 0, 0, 0.03),
+    0 7px 0 rgba(0, 0, 0, 0.03),
+    0 8px 0 rgba(0, 0, 0, 0.02),
+    0 9px 0 rgba(0, 0, 0, 0.02),
+    0 10px 0 rgba(0, 0, 0, 0.01),
+    0 11px 0 rgba(0, 0, 0, 0.01),
+    0 12px 0 rgba(0, 0, 0, 0.01),
+    0 13px 0 rgba(0, 0, 0, 0.01),
+    0 14px 0 rgba(0, 0, 0, 0.01),
+    0 15px 0 rgba(0, 0, 0, 0.01),
+    0 15px 10px rgba(0, 0, 0, 0.2);
+}
+
+.text-3d-embossed {
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 
+    0 2px 1px rgba(0, 0, 0, 0.1),
+    0 4px 2px rgba(0, 0, 0, 0.07),
+    0 8px 4px rgba(0, 0, 0, 0.07),
+    0 16px 8px rgba(0, 0, 0, 0.07),
+    0 32px 16px rgba(0, 0, 0, 0.07);
+}
+
+/* ===== 3D Cube Effects ===== */
+.cube-3d {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: cube-rotate 10s linear infinite;
+}
+
+.cube-face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(56, 189, 248, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.cube-face.front {
+  transform: translateZ(50px);
+  background: rgba(30, 58, 138, 0.8);
+}
+
+.cube-face.back {
+  transform: translateZ(-50px) rotateY(180deg);
+  background: rgba(37, 99, 235, 0.8);
+}
+
+.cube-face.right {
+  transform: rotateY(90deg) translateZ(50px);
+  background: rgba(56, 189, 248, 0.8);
+}
+
+.cube-face.left {
+  transform: rotateY(-90deg) translateZ(50px);
+  background: rgba(14, 165, 233, 0.8);
+}
+
+.cube-face.top {
+  transform: rotateX(90deg) translateZ(50px);
+  background: rgba(96, 165, 250, 0.8);
+}
+
+.cube-face.bottom {
+  transform: rotateX(-90deg) translateZ(50px);
+  background: rgba(59, 130, 246, 0.8);
+}
+
+@keyframes cube-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Pyramid Effects ===== */
+.pyramid-3d {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 86px solid rgba(56, 189, 248, 0.8);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: pyramid-rotate 8s linear infinite;
+}
+
+.pyramid-3d::before {
+  content: '';
+  position: absolute;
+  top: 86px;
+  left: -50px;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 86px solid rgba(30, 58, 138, 0.8);
+  transform: rotateX(90deg);
+}
+
+@keyframes pyramid-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Sphere Effects ===== */
+.sphere-3d {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(56, 189, 248, 0.8));
+  box-shadow: 
+    inset -10px -10px 20px rgba(0, 0, 0, 0.2),
+    inset 10px 10px 20px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(56, 189, 248, 0.5);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: sphere-rotate 6s linear infinite;
+}
+
+.sphere-3d::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  filter: blur(2px);
+}
+
+@keyframes sphere-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Torus Effects ===== */
+.torus-3d {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #1e3a8a, #2563eb, #38bdf8, #0ea5e9, #1e3a8a);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: torus-rotate 4s linear infinite;
+}
+
+.torus-3d::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--dark-color);
+  transform: translateZ(10px);
+}
+
+@keyframes torus-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Cylinder Effects ===== */
+.cylinder-3d {
+  position: relative;
+  width: 60px;
+  height: 100px;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.8), rgba(14, 165, 233, 0.8));
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: cylinder-rotate 5s linear infinite;
+}
+
+.cylinder-3d::before,
+.cylinder-3d::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(30, 58, 138, 0.8);
+}
+
+.cylinder-3d::before {
+  top: -30px;
+  transform: rotateX(90deg);
+}
+
+.cylinder-3d::after {
+  bottom: -30px;
+  transform: rotateX(-90deg);
+}
+
+@keyframes cylinder-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Cone Effects ===== */
+.cone-3d {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 80px solid rgba(56, 189, 248, 0.8);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: cone-rotate 7s linear infinite;
+}
+
+.cone-3d::before {
+  content: '';
+  position: absolute;
+  top: 80px;
+  left: -40px;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 40px solid rgba(30, 58, 138, 0.8);
+  transform: rotateX(90deg) translateZ(-20px);
+}
+
+@keyframes cone-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Octahedron Effects ===== */
+.octahedron-3d {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 43px solid rgba(56, 189, 248, 0.8);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: octahedron-rotate 6s linear infinite;
+}
+
+.octahedron-3d::before {
+  content: '';
+  position: absolute;
+  top: 43px;
+  left: -50px;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 43px solid rgba(30, 58, 138, 0.8);
+}
+
+@keyframes octahedron-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Dodecahedron Effects ===== */
+.dodecahedron-3d {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: rgba(56, 189, 248, 0.8);
+  border-radius: 20px;
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: dodecahedron-rotate 8s linear infinite;
+}
+
+.dodecahedron-3d::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background: rgba(30, 58, 138, 0.8);
+  border-radius: 15px;
+  transform: rotateX(45deg);
+}
+
+@keyframes dodecahedron-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Icosahedron Effects ===== */
+.icosahedron-3d {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 52px solid rgba(56, 189, 248, 0.8);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: icosahedron-rotate 5s linear infinite;
+}
+
+.icosahedron-3d::before {
+  content: '';
+  position: absolute;
+  top: 52px;
+  left: -30px;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 52px solid rgba(30, 58, 138, 0.8);
+}
+
+@keyframes icosahedron-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Prism Effects ===== */
+.prism-3d {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 69px solid rgba(56, 189, 248, 0.8);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: prism-rotate 7s linear infinite;
+}
+
+.prism-3d::before {
+  content: '';
+  position: absolute;
+  top: 69px;
+  left: -40px;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 35px solid rgba(30, 58, 138, 0.8);
+}
+
+@keyframes prism-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Helix Effects ===== */
+.helix-3d {
+  position: relative;
+  width: 20px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: helix-rotate 4s linear infinite;
+}
+
+.helix-segment {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.8);
+  transform-origin: center;
+}
+
+.helix-segment:nth-child(1) {
+  top: 0;
+  transform: rotateY(0deg) translateZ(30px);
+}
+
+.helix-segment:nth-child(2) {
+  top: 20px;
+  transform: rotateY(45deg) translateZ(30px);
+}
+
+.helix-segment:nth-child(3) {
+  top: 40px;
+  transform: rotateY(90deg) translateZ(30px);
+}
+
+.helix-segment:nth-child(4) {
+  top: 60px;
+  transform: rotateY(135deg) translateZ(30px);
+}
+
+.helix-segment:nth-child(5) {
+  top: 80px;
+  transform: rotateY(180deg) translateZ(30px);
+}
+
+@keyframes helix-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Star Effects ===== */
+.star-3d {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 35px solid rgba(56, 189, 248, 0.8);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: star-rotate 6s linear infinite;
+}
+
+.star-3d::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -50px;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 35px solid rgba(30, 58, 138, 0.8);
+}
+
+.star-3d::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: -15px;
+  width: 30px;
+  height: 30px;
+  background: rgba(96, 165, 250, 0.8);
+  transform: translateZ(20px);
+}
+
+@keyframes star-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Heart Effects ===== */
+.heart-3d {
+  position: relative;
+  width: 50px;
+  height: 45px;
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: heart-rotate 8s linear infinite;
+}
+
+.heart-3d::before,
+.heart-3d::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 26px;
+  height: 40px;
+  border-radius: 25px 25px 0 0;
+  background: rgba(248, 56, 56, 0.8);
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+.heart-3d::after {
+  left: 25px;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+@keyframes heart-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Diamond Effects ===== */
+.diamond-3d {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 25px solid rgba(56, 189, 248, 0.8);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: diamond-rotate 5s linear infinite;
+}
+
+.diamond-3d::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: -25px;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 25px solid rgba(30, 58, 138, 0.8);
+}
+
+@keyframes diamond-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Cross Effects ===== */
+.cross-3d {
+  position: relative;
+  width: 20px;
+  height: 80px;
+  background: rgba(56, 189, 248, 0.8);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: cross-rotate 6s linear infinite;
+}
+
+.cross-3d::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: -30px;
+  width: 80px;
+  height: 20px;
+  background: rgba(30, 58, 138, 0.8);
+  transform: translateZ(10px);
+}
+
+@keyframes cross-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Arrow Effects ===== */
+.arrow-3d {
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid rgba(56, 189, 248, 0.8);
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: arrow-rotate 4s linear infinite;
+}
+
+.arrow-3d::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid rgba(30, 58, 138, 0.8);
+}
+
+@keyframes arrow-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Ring Effects ===== */
+.ring-3d {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border: 15px solid rgba(56, 189, 248, 0.8);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: ring-rotate 6s linear infinite;
+}
+
+.ring-3d::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background: rgba(30, 58, 138, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) translateZ(20px);
+}
+
+@keyframes ring-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
+
+/* ===== 3D Spiral Effects ===== */
+.spiral-3d {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  transform-style: preserve-3d;
+  transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  animation: spiral-rotate 5s linear infinite;
+}
+
+.spiral-segment {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.8);
+  transform-origin: center;
+}
+
+.spiral-segment:nth-child(1) {
+  top: 50px;
+  left: 50px;
+  transform: rotateZ(0deg) translateX(30px) rotateZ(0deg);
+}
+
+.spiral-segment:nth-child(2) {
+  top: 50px;
+  left: 50px;
+  transform: rotateZ(36deg) translateX(30px) rotateZ(-36deg);
+}
+
+.spiral-segment:nth-child(3) {
+  top: 50px;
+  left: 50px;
+  transform: rotateZ(72deg) translateX(30px) rotateZ(-72deg);
+}
+
+.spiral-segment:nth-child(4) {
+  top: 50px;
+  left: 50px;
+  transform: rotateZ(108deg) translateX(30px) rotateZ(-108deg);
+}
+
+.spiral-segment:nth-child(5) {
+  top: 50px;
+  left: 50px;
+  transform: rotateZ(144deg) translateX(30px) rotateZ(-144deg);
+}
+
+@keyframes spiral-rotate {
+  from {
+    transform: perspective(500px) rotateX(-20deg) rotateY(20deg);
+  }
+  to {
+    transform: perspective(500px) rotateX(-20deg) rotateY(380deg);
+  }
+}
